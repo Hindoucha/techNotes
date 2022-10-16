@@ -7,7 +7,9 @@ const corsOptions = {
         } else {
             callback(new Error('Not allowed'))
         }
-    }
+    },
+    credentials : true,
+    optionsSuccessStatus : 200
 }
 
 module.exports = corsOptions
