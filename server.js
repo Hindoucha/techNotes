@@ -30,9 +30,11 @@ app.use(cookieParser())
 
 
 // ROUTES
-// where to find other normal routes
+// index route
 app.use('/', require('./routes/root'))
+app.use('/users', require('./routes/userRoutes'))
 
+// 404 route
 app.all('*', (req, res)=> {
     res.status(404)
     if(req.accepts('html')){
@@ -50,7 +52,7 @@ app.use(errHandler)
 
 mongoose.connection.once('open', () => {
     console.log('connected to mongodb')
-    app.listen(PORT, () => { console.log(`Server listenig on port ${PORT}`)})
+    app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`)})
 })
 
 mongoose.connection.on('error', err => {
